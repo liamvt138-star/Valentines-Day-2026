@@ -4,7 +4,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-image: url("pickle-bg.jpg");
+    background-image: url("pickle-bg.png");
     font-family: "Pixelify Sans", sans-serif
 }
 
@@ -137,3 +137,4 @@ display: inline-block;
     background-color: rgba(255,240,240,0.5);
     border-radius: 12px;
 }
+
