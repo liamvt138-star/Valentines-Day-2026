@@ -5,7 +5,7 @@ const noBtn = document.querySelector(".no-btn");
 const yesBtn = document.querySelector(".btn[alt='Yes']");
 
 const title = document.getElementById("letter-title");
-const catImg = document.getElementById("letter-cat");
+const koalaImg = document.getElementById("letter-koala");
 const buttons = document.getElementById("letter-buttons");
 const finalText = document.getElementById("final-text");
 
@@ -29,11 +29,11 @@ noBtn.addEventListener("mouseover", () => {
     const distance = Math.random() * (max - min) + min;
     const angle = Math.random() * Math.PI * 2;
 
-    const moveX = Math.cost(angle) * distance;
+    const moveX = Math.cos(angle) * distance;
     const moveY = Math.sin(angle) * distance;
 
     noBtn.style.transition = "transform 0.3s ease";
-    noBtn.style.transform = 'translate(${moveX}px, ${moveY}px)';
+    noBtn.style.transform = `translate(${moveX}px, ${moveY}px)`;
 })
 
 // Logic to make YES btn grow
@@ -62,7 +62,7 @@ noBtn.addEventListener("mouseover", () => {
 yesBtn.addEventListener("click", () => {
     title.textContent = "Joanna, you have NO IDEA how excited I am!";
 
-    catImg.src = "cat_dance.gif";
+    koalaImg.src = "koko.png";
 
     document.querySelector(".letter-window").classList.add("final");
 
