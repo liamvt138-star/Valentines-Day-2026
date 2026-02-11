@@ -59,7 +59,7 @@ noBtn.addEventListener("mouseover", () => {
     noBtn.style.transform = `translate(${moveX}px, ${moveY}px)`;
     
     // FIX 2b: Grow the Yes button each time No moves
-    yesScale += 0.5; // Increase scale by 0.5 each hover
+    yesScale += 1.5; // Increase scale by 1.5 each hover
     yesBtn.style.transform = `scale(${yesScale})`; // Apply the scale
 });
 
@@ -75,4 +75,7 @@ yesBtn.addEventListener("click", () => {
     buttons.style.display = "none";
 
     finalText.style.display = "block";
+
+    // Show popup images
+    document.getElementById("popup-images").style.display = "flex";
 });
