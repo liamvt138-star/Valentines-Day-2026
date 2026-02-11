@@ -59,7 +59,7 @@ noBtn.addEventListener("mouseover", () => {
     noBtn.style.transform = `translate(${moveX}px, ${moveY}px)`;
     
     // FIX 2b: Grow the Yes button each time No moves
-    yesScale += 1.0; // Increase scale by 1.0 each hover
+    yesScale += 0.75; // Increase scale by 0.75 each hover
     yesBtn.style.transform = `scale(${yesScale})`; // Apply the scale
 });
 
@@ -67,15 +67,17 @@ noBtn.addEventListener("mouseover", () => {
 
 yesBtn.addEventListener("click", () => {
     title.textContent = "Joanna, you have NO IDEA how excited I am!";
-
     catImg.src = "cat_dance.gif";
-
     document.querySelector(".letter-window").classList.add("final");
-
     buttons.style.display = "none";
-
     finalText.style.display = "block";
 
-    // Show popup images
-    document.getElementById("popup-images").style.display = "flex";
+    // Show popup images - UPDATED
+    const popupImages = document.getElementById("popup-images");
+    if (popupImages) {
+        popupImages.style.display = "block";
+        console.log("Images should appear now"); // Check browser console
+    } else {
+        console.log("popup-images not found!"); // Debug message
+    }
 });
