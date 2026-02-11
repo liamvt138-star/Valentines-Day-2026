@@ -5,7 +5,7 @@ const noBtn = document.querySelector(".no-btn");
 const yesBtn = document.querySelector(".yes-btn");
 
 const title = document.getElementById("letter-title");
-const koalaImg = document.getElementById("letter-koala");
+const catImg = document.getElementById("letter-koala");
 const buttons = document.getElementById("letter-buttons");
 const finalText = document.getElementById("final-text");
 
@@ -23,43 +23,36 @@ envelope.addEventListener("click", () => {
 // Logic to move the NO btn
 
 noBtn.addEventListener("mouseover", () => {
-    const min = 150;
-    const max = 250;
-    const distance = Math.random() * (max - min) + min;
-    const angle = Math.random() * Math.PI * 2;
+    // Get viewport dimensions
+    const viewportWidth = window.innerWidth;
+    const viewportHeight = window.innerHeight;
     
-    // Calculate potential new position
-    let moveX = Math.cos(angle) * distance;
-    let moveY = Math.sin(angle) * distance;
+    // Get button dimensions
+    const btnRect = noBtn.getBoundingClientRect();
+    const btnWidth = btnRect.width;
+    const btnHeight = btnRect.height;
     
-    // Get button's current position
-    const rect = noBtn.getBoundingClientRect();
-    const btnWidth = rect.width;
-    const btnHeight = rect.height;
+    // Define safe zone (with margin from edges)
+    const margin = 20;
+    const maxX = viewportWidth - btnWidth - margin;
+    const maxY = viewportHeight - btnHeight - margin;
     
-    // Calculate new position
-    const newX = rect.left + moveX;
-    const newY = rect.top + moveY;
+    // Generate random position within safe zone
+    const randomX = Math.random() * (maxX - margin) + margin;
+    const randomY = Math.random() * (maxY - margin) + margin;
     
-    // Check boundaries and adjust if needed
-    const margin = 20; // Keep 20px away from edges
-    
-    // Check left/right boundaries
-    if (newX < margin) {
-        moveX = margin - rect.left;
-    } else if (newX + btnWidth > window.innerWidth - margin) {
-        moveX = (window.innerWidth - margin - btnWidth) - rect.left;
-    }
-    
-    // Check top/bottom boundaries
-    if (newY < margin) {
-        moveY = margin - rect.top;
-    } else if (newY + btnHeight > window.innerHeight - margin) {
-        moveY = (window.innerHeight - margin - btnHeight) - rect.top;
-    }
+    // Calculate how much to move from current position
+    const currentX = btnRect.left;
+    const currentY = btnRect.top;
+    const moveX = randomX - currentX;
+    const moveY = randomY - currentY;
     
     noBtn.style.transition = "transform 0.3s ease";
     noBtn.style.transform = `translate(${moveX}px, ${moveY}px)`;
+    
+    // Grow the Yes button each time No moves
+    yesScale += 0.2;
+    yesBtn.style.transform = `scale(${yesScale})`;
 });
 
 // Logic to make YES btn grow
@@ -70,7 +63,7 @@ yesBtn.style.position = "relative"
 yesBtn.style.transformOrigin = "center center";
 yesBtn.style.transition = "transform 0.3s ease";
 
-noBtn.addEventListener("click", () => {
+noBtn.addEventListener("mouseover", () => {
       yesScale +=2;
 
     if(yesBtn.style.position !== "fixed") {
@@ -88,7 +81,7 @@ noBtn.addEventListener("click", () => {
 yesBtn.addEventListener("click", () => {
     title.textContent = "Joanna, you have NO IDEA how excited I am!";
 
-    koalaImg.src = "Koko.png";
+    catImg.src = "cat_dance.gif";
 
     document.querySelector(".letter-window").classList.add("final");
 
