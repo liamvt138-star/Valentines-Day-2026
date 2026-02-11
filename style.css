@@ -82,7 +82,6 @@ p {
 
 .koala {
     width: 250px;
-    height: 200px;  /* Add this line to control height */
     object-fit: cover;  /* Add this line to crop nicely */
     margin: 7.5px 0;
     transition: width 0.4s ease;
@@ -90,7 +89,6 @@ p {
 
 .letter-window.final .koala {
     width: 180px;
-    height: 180px;  /* Add this line for proportional height when Yes is clicked */
 }
 
 /* buttons */
@@ -240,6 +238,7 @@ display: inline-block;
     opacity: 1;
   }
 }
+
 
 
 
