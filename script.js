@@ -62,7 +62,7 @@ noBtn.addEventListener("mouseover", () => {
 yesBtn.addEventListener("click", () => {
     title.textContent = "Joanna, you have NO IDEA how excited I am!";
 
-    koalaImg.src = "koko.png";
+    koalaImg.src = "Koko.png";
 
     document.querySelector(".letter-window").classList.add("final");
 
