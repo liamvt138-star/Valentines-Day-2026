@@ -90,7 +90,7 @@ p {
 
 .letter-window.final .koala {
     width: 180px;
-    height: 180px;  /* Add this line for proportional height when Yes is clicked */
+    height: 150px;  /* Add this line for proportional height when Yes is clicked */
 }
 
 /* buttons */
@@ -240,6 +240,7 @@ display: inline-block;
     opacity: 1;
   }
 }
+
 
 
 
