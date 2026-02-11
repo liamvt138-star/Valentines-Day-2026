@@ -59,7 +59,7 @@ noBtn.addEventListener("mouseover", () => {
     noBtn.style.transform = `translate(${moveX}px, ${moveY}px)`;
     
     // FIX 2b: Grow the Yes button each time No moves
-    yesScale += 1.5; // Increase scale by 1.5 each hover
+    yesScale += 1.0; // Increase scale by 1.0 each hover
     yesBtn.style.transform = `scale(${yesScale})`; // Apply the scale
 });
 
