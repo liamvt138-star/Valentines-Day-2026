@@ -4,7 +4,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-image: url("pickle-bg.png");
+    background-image: url("pickle-bg-2.png");
     font-family: "Pixelify Sans", sans-serif
 }
 
@@ -164,7 +164,7 @@ display: inline-block;
 
 /* First photo - LEFT SIDE TOP */
 .photo-left-1 {
-  left: calc(50% - 500px);
+  left: 10px;
   top: 20%;
   transform: rotate(-12deg);
   animation: popIn1 0.6s ease forwards 0.3s;
@@ -172,7 +172,7 @@ display: inline-block;
 
 /* Second photo - LEFT SIDE BOTTOM */
 .photo-left-2 {
-  left: calc(50% - 480px);
+  left: 30px;
   bottom: 25%;
   transform: rotate(8deg);
   animation: popIn2 0.6s ease forwards 0.5s;
@@ -180,7 +180,7 @@ display: inline-block;
 
 /* Third photo - RIGHT SIDE */
 .photo-right {
-  right: calc(50% - 500px);
+  right: 10px;
   top: 30%;
   transform: rotate(-10deg);
   animation: popIn3 0.6s ease forwards 0.7s;
@@ -218,3 +218,4 @@ display: inline-block;
     opacity: 1;
   }
 }
+
