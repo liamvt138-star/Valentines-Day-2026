@@ -9,6 +9,11 @@ const catImg = document.getElementById("letter-koala");
 const buttons = document.getElementById("letter-buttons");
 const finalText = document.getElementById("final-text");
 
+let yesScale = 1;
+yesBtn.style.position = "relative"
+yesBtn.style.transformOrigin = "center center";
+yesBtn.style.transition = "transform 0.3s ease";
+
 // Click Envelope
 
 envelope.addEventListener("click", () => {
@@ -23,17 +28,22 @@ envelope.addEventListener("click", () => {
 // Logic to move the NO btn
 
 noBtn.addEventListener("mouseover", () => {
+    // Get button wrapper position (the no-wrapper div)
+    const wrapper = noBtn.parentElement; // FIX 3a: Get the parent wrapper for proper positioning
+    const wrapperRect = wrapper.getBoundingClientRect();
+    
     // Get viewport dimensions
     const viewportWidth = window.innerWidth;
     const viewportHeight = window.innerHeight;
     
     // Get button dimensions
-    const btnRect = noBtn.getBoundingClientRect();
-    const btnWidth = btnRect.width;
-    const btnHeight = btnRect.height;
+    const btnWidth = noBtn.offsetWidth;
+    const btnHeight = noBtn.offsetHeight;
     
     // Define safe zone (with margin from edges)
-    const margin = 20;
+    const margin = 50; // FIX 3b: Increased margin to keep button further from edges
+    
+    // Calculate max safe positions
     const maxX = viewportWidth - btnWidth - margin;
     const maxY = viewportHeight - btnHeight - margin;
     
@@ -41,39 +51,16 @@ noBtn.addEventListener("mouseover", () => {
     const randomX = Math.random() * (maxX - margin) + margin;
     const randomY = Math.random() * (maxY - margin) + margin;
     
-    // Calculate how much to move from current position
-    const currentX = btnRect.left;
-    const currentY = btnRect.top;
-    const moveX = randomX - currentX;
-    const moveY = randomY - currentY;
+    // FIX 3c: Use absolute positioning from wrapper's original position
+    const moveX = randomX - wrapperRect.left;
+    const moveY = randomY - wrapperRect.top;
     
     noBtn.style.transition = "transform 0.3s ease";
     noBtn.style.transform = `translate(${moveX}px, ${moveY}px)`;
     
-    // Grow the Yes button each time No moves
-    yesScale += 0.2;
-    yesBtn.style.transform = `scale(${yesScale})`;
-});
-
-// Logic to make YES btn grow
-
-let yesScale = 1;
-
-yesBtn.style.position = "relative"
-yesBtn.style.transformOrigin = "center center";
-yesBtn.style.transition = "transform 0.3s ease";
-
-noBtn.addEventListener("mouseover", () => {
-      yesScale +=2;
-
-    if(yesBtn.style.position !== "fixed") {
-        yesBtn.style.position = "fixed";
-        yesBtn.style.top = "50%";
-        yesBtn.style.left = "50%";
-        yesBtn.style.transform = 'translate(-50%, -50%) scale(${yesScale})';
-    }else{
-        yesBtn.style.transform = 'translate(-50%, -50%) scale(${yesScale})';
-        }
+    // FIX 2b: Grow the Yes button each time No moves
+    yesScale += 0.1; // Increase scale by 0.1 each hover
+    yesBtn.style.transform = `scale(${yesScale})`; // Apply the scale
 });
 
 //YES is clicked
