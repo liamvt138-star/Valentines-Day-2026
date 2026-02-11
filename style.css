@@ -60,7 +60,7 @@ body {
 
     transform: scale(1.2);
     opacity: 0;
-    transition: transform 0.6 ease, opacity 0.6s ease;
+    transition: transform 0.6s ease, opacity 0.6s ease;
 }
 
 .letter-window.open {
@@ -137,4 +137,3 @@ display: inline-block;
     background-color: rgba(255,240,240,0.5);
     border-radius: 12px;
 }
-
