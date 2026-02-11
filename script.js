@@ -72,12 +72,6 @@ yesBtn.addEventListener("click", () => {
     buttons.style.display = "none";
     finalText.style.display = "block";
 
-    // Show popup images - UPDATED
-    const popupImages = document.getElementById("popup-images");
-    if (popupImages) {
-        popupImages.style.display = "block";
-        console.log("Images should appear now"); // Check browser console
-    } else {
-        console.log("popup-images not found!"); // Debug message
-    }
+    // Show popup images
+    document.getElementById("popup-images").style.display = "block";
 });
